@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="./css/flex-layout-attribute.min.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/style.css">
 
 </head>
 <body class="notconnected" data-pinterest-extension-installed="cr1.39.1">
@@ -15,19 +15,10 @@
 
 
     <div class="container">
-        <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active">Home</li>
-                </ul>
-            </nav>
-            <h3 class="text-muted">Project name</h3>
-        </div>
-
-        <div class="jumbotron">
+        <div class="jumbotron nat">
             <div id="connection">
                 <label>ID</label>
-                <input id="idInput" type="text">
+                <input value="10941974" id="idInput" type="text">
                 <a id="connectButton" class="btn btn-default" role="button" onclick="websocketclient.connect();
           $('#connectButton').hide();
           $('#disconnectButton').show();"> Connect</a>
@@ -36,25 +27,57 @@
           $('#disconnectButton').hide();">Disconnect</a>
             </div>
         </div>
-        <div class="jumbotron">
-            <label>Message</label>
-            <textarea id="publishPayload"></textarea>
-            <a class="btn btn-default" id="publishButton"
-               onclick="websocketclient.publish($(&#39;#publishPayload&#39;).val())">Publish</a>
-        </div>
-        <div class="jumbotron">
-            <div class="container" id="messagesMain" style="display: none;">
-                <div class="panel panel-default">
-                    <div class="panel-body" id="messEdit">
-                    </div>
+        <!--<div class="jumbotron">-->
+        <!--<label>Message</label>-->
+        <!--<textarea id="publishPayload"></textarea>-->
+        <!--<a class="btn btn-default" id="publishButton"-->
+        <!--</div>-->
+        <!--<div class="jumbotron">-->
+        <!--<div class="container" id="messagesMain" style="display: none;">-->
+        <!--<div class="panel panel-default">-->
+        <!--<div class="panel-body" id="messEdit">-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <div class="the-container">
+
+            <input type="checkbox" id="toggle"/>
+            <label for="toggle"></label>
+
+            <div class="day-night-cont">
+                <span class="the-sun"></span>
+                <div class="the-moon"><span class="moon-inside"></span></div>
+            </div>
+
+            <div class="switch">
+                <div class="button">
+                    <div class="b-inside"></div>
                 </div>
             </div>
+
+            <div class="c-window">
+
+                <span class="the-sun"></span>
+                <span class="the-moon"></span>
+
+                <div class="the-fox">
+                    <div class="fox-face">
+                        <section class="eyes left"></section>
+                        <section class="eyes right"></section>
+                        <span class="nose"></span>
+                        <div class="white-part"><span class="mouth"></span></div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
-
-        <footer class="footer">
-            <p>© 2015 Company, Inc.</p>
-        </footer>
+        <!--<footer class="footer">-->
+        <!--<p>© 2015 Company, Inc.</p>-->
+        <!--</footer>-->
 
     </div> <!-- /container -->
 
@@ -71,6 +94,21 @@
     <script src="./js/config.js"></script>
     <script>
         $(document).ready(function () {
+            websocketclient.connect();
+
+            $("#toggle").change(function () {
+                var $this = $(this);
+                var checked = $this.is(":checked");
+                if (checked) {
+                    websocketclient.publish("11");
+                }
+                else {
+                    websocketclient.publish("10");
+                }
+
+            });
+
+
             if ($('body').hasClass("notconnected")) {
                 $('#connectButton').show();
                 $('#disconnectButton').hide();
