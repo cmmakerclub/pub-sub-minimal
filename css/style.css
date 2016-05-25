@@ -89,6 +89,10 @@ body{
     bottom: -30px;
 }
 
+.c-window .the-fox:active{
+    bottom: -40px;
+}
+
 .c-window .the-fox .eyes{
     display: block;
     position: absolute;
@@ -306,4 +310,3 @@ input[type=checkbox]:checked ~ .c-window .the-fox:hover .eyes{
 .nat {
     display: none;
 }
-

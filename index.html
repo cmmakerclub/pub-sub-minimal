@@ -8,23 +8,43 @@
     <link rel="stylesheet" href="./css/flex-layout-attribute.min.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script>
+        function clickCounter() {
+          if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+            console.log(localStorage.clickcount);
 
+            if(localStorage.clickcount==5){
+
+              console.log("passing");
+
+              $('#KiangBox').show();
+              localStorage.clickcount = 0;
+            }
+          } else {
+            localStorage.clickcount = 0;
+          }
+          //disconnect if #KiangBox is show()
+          if($('#KiangBox').is(":visible")){
+              websocketclient.disconnect();
+          }
+        }
+    </script>
 </head>
 <body class="notconnected" data-pinterest-extension-installed="cr1.39.1">
 <div id="content">
 
 
     <div class="container">
-        <div class="jumbotron nat">
+        <div id="KiangBox" class="jumbotron nat">
             <div id="connection">
                 <label>ID</label>
                 <input value="10941974" id="idInput" type="text">
                 <a id="connectButton" class="btn btn-default" role="button" onclick="websocketclient.connect();
-          $('#connectButton').hide();
-          $('#disconnectButton').show();"> Connect</a>
-                <a id="disconnectButton" class="btn btn-default" role="button" onclick="websocketclient.disconnect();
+          $('#KiangBox').hide()"> Connect</a>
+                <!-- <a id="disconnectButton" class="btn btn-default" role="button" onclick="websocketclient.disconnect();
           $('#connectButton').show();
-          $('#disconnectButton').hide();">Disconnect</a>
+          $('#disconnectButton').hide();">Disconnect</a> -->
             </div>
         </div>
         <!--<div class="jumbotron">-->
@@ -63,7 +83,7 @@
                 <span class="the-moon"></span>
 
                 <div class="the-fox">
-                    <div class="fox-face">
+                    <div onclick="clickCounter()" type="button" class="fox-face">
                         <section class="eyes left"></section>
                         <section class="eyes right"></section>
                         <span class="nose"></span>
@@ -94,6 +114,8 @@
     <script src="./js/config.js"></script>
     <script>
         $(document).ready(function () {
+            localStorage.clear();
+
             websocketclient.connect();
 
             $("#toggle").change(function () {
@@ -105,14 +127,7 @@
                 else {
                     websocketclient.publish("10");
                 }
-
             });
-
-
-            if ($('body').hasClass("notconnected")) {
-                $('#connectButton').show();
-                $('#disconnectButton').hide();
-            }
 
         });
     </script>
