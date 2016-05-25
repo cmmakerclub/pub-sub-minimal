@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width">
     <title>Prototype</title>
@@ -13,69 +14,70 @@
 <div id="content">
 
 
-  <div class="container">
-    <div class="header clearfix">
-      <nav>
-        <ul class="nav nav-pills pull-right">
-          <li role="presentation" class="active">Home</li>
-        </ul>
-      </nav>
-      <h3 class="text-muted">Project name</h3>
-    </div>
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active">Home</li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Project name</h3>
+        </div>
 
-    <div class="jumbotron">
-      <div id="connection">
-        <label>ID</label>
-        <input id="idInput" type="text">
-        <a id="connectButton" class="btn btn-default" role="button" onclick="websocketclient.connect();
+        <div class="jumbotron">
+            <div id="connection">
+                <label>ID</label>
+                <input id="idInput" type="text">
+                <a id="connectButton" class="btn btn-default" role="button" onclick="websocketclient.connect();
           $('#connectButton').hide();
           $('#disconnectButton').show();"> Connect</a>
-        <a id="disconnectButton" class="btn btn-default" role="button" onclick="websocketclient.disconnect();
+                <a id="disconnectButton" class="btn btn-default" role="button" onclick="websocketclient.disconnect();
           $('#connectButton').show();
           $('#disconnectButton').hide();">Disconnect</a>
-      </div>
-    </div>
-    <div class="jumbotron">
-      <label>Message</label>
-      <textarea id="publishPayload"></textarea>
-      <a class="btn btn-default" id="publishButton" onclick="websocketclient.publish($(&#39;#publishPayload&#39;).val())">Publish</a>
-    </div>
-    <div class="jumbotron">
-      <div class="container" id="messagesMain" style="display: none;">
-        <div class="panel panel-default">
-          <div class="panel-body" id="messEdit">
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
+        <div class="jumbotron">
+            <label>Message</label>
+            <textarea id="publishPayload"></textarea>
+            <a class="btn btn-default" id="publishButton"
+               onclick="websocketclient.publish($(&#39;#publishPayload&#39;).val())">Publish</a>
+        </div>
+        <div class="jumbotron">
+            <div class="container" id="messagesMain" style="display: none;">
+                <div class="panel panel-default">
+                    <div class="panel-body" id="messEdit">
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-    <footer class="footer">
-      <p>© 2015 Company, Inc.</p>
-    </footer>
+        <footer class="footer">
+            <p>© 2015 Company, Inc.</p>
+        </footer>
 
-  </div> <!-- /container -->
+    </div> <!-- /container -->
 
-  <script src="./js/jquery.min.js"></script>
-  <script src="./js/jquery-ui.min.js"></script>
-  <script src="./js/bootstrap.min.js"></script>
-  <script src="./js/lodash.min.js"></script>
-  <script src="./js/modernizr.min.js"></script>
-  <script src="./js/moment.min.js"></script>
-  <script src="./js/jquery.minicolors.min.js"></script>
-  <script src="./js/mqttws31.js"></script>
-  <script src="./js/encoder.js"></script>
-  <script src="./js/app.js"></script>
-  <script src="./js/config.js"></script>
-  <script>
-    $(document).ready(function () {
-      if($('body').hasClass("notconnected")){
-        $('#connectButton').show();
-        $('#disconnectButton').hide();
-      }
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery-ui.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/lodash.min.js"></script>
+    <script src="./js/modernizr.min.js"></script>
+    <script src="./js/moment.min.js"></script>
+    <script src="./js/jquery.minicolors.min.js"></script>
+    <script src="./js/mqttws31.js"></script>
+    <script src="./js/encoder.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/config.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('body').hasClass("notconnected")) {
+                $('#connectButton').show();
+                $('#disconnectButton').hide();
+            }
 
-    });
-  </script>
+        });
+    </script>
 
 </div>
 </body>
